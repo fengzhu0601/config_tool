@@ -15,5 +15,5 @@
 rm -rf ./json
 python gen_json.py ./excel
 
-# rm -rf ./code
-# python gen_code.py ./excel
+rm -rf ./code
+python gen_code.py ./excel
