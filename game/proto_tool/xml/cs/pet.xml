@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="pet" desc="宠物">
+    <constants>
+    </constants>
+
+    <structs>
+        <struct name="pet" desc="宠物结构">
+            <field name="uid" type="uint32" isarray="false" desc="宠物UID"/>
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="level" type="uint32" isarray="false" desc="等级"/>
+            <field name="exp" type="uint32" isarray="false" desc="经验"/>
+            <field name="wears" type="uint32" isarray="true" desc="穿戴列表"/>
+            <field name="satiety" type="uint32" isarray="false" desc="饱食度"/>
+            <field name="feed_timestamp" type="int64" isarray="false" desc="喂食时间戳"/>
+            <field name="feed_times" type="uint32" isarray="false" desc="喂食剩余次数"/>
+        </struct>
+    </structs>
+
+    <requests>
+        <request cmd="1211" name="put_on_clothes" desc="穿戴服装请求 成功后会推送 1202">
+            <field name="uid" type="uint32" isarray="false" desc="宠物UID"/>
+            <field name="clothes_uid" type="uint32" isarray="false" desc="服装Uid"/>
+        </request>
+
+        <request cmd="1212" name="take_off_clothes" desc="脱下服装请求 成功后会推送 1202">
+            <field name="uid" type="uint32" isarray="false" desc="宠物UID"/>
+            <field name="clothes_uid" type="uint32" isarray="false" desc="服装Uid"/>
+        </request>
+
+        <request cmd="1213" name="feed_pet" desc="喂养宠物 成功后会推送1202">
+            <field name="uid" type="uint32" isarray="false" desc="宠物UID"/>
+            <field name="food_id" type="uint32" isarray="false" desc="食物ID"/>
+        </request>
+
+
+    </requests>
+
+    <responses>
+        <response cmd="1200" name="pet_info" desc="宠物信息登录推送">
+            <field name="pets" type="pet" isarray="true" desc="宠物列表"/>
+        </response>
+        <response cmd="1201" name="pet_update" desc="宠物信息变更推送">
+            <field name="pets" type="pet" isarray="true" desc="宠物列表"/>
+        </response>
+
+        <response cmd="1202" name="one_pet_update" desc="单个宠物信息变更推送">
+            <field name="pet" type="pet" isarray="false" desc="宠物信息"/>
+        </response>
+
+<!--        <response cmd="612" name="take_off_clothes" desc="脱下服装成功返回">-->
+<!--            <field name="clothes_uid" type="uint32" isarray="false" desc="装备Uid"/>-->
+<!--        </response>-->
+
+<!--        <response cmd="613" name="feed_pet" desc="喂养返回">-->
+<!--            <field name="pet" type="pet" isarray="false" desc="宠物"/>-->
+<!--        </response>-->
+    </responses>
+
+</module>
+

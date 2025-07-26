@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="reward" desc="奖励">
+    <constants>
+        <constant name="SHOW_TYPE" public="true" desc="展示类型">
+            <field name="NONE" value="0" desc="不展示"/>
+            <field name="COMMON" value="1" desc="通用弹窗"/>
+        </constant>
+    </constants>
+    <structs>
+        <struct name="item_reward" desc="道具奖励列表">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="stack_num" type="uint64" isarray="false" desc="数量"/>
+            <field name="grade" type="uint8" isarray="false" desc="品质"/>
+            <field name="level" type="uint8" isarray="false" desc="等级"/>
+        </struct>
+    </structs>
+
+    <requests>
+       
+    </requests>
+
+    <responses>
+       <response cmd="150" name="show_rewards" desc="奖励弹窗">
+            <field name="show_type" type="SHOW_TYPE" isarray="false" desc="展示类型"/>
+            <field name="rewards" type="item_reward" isarray="true" desc="奖励列表"/>
+        </response>
+    </responses>
+
+</module>
+

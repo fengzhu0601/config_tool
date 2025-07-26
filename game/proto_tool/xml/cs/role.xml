@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="role" desc="角色">
+    <constants>
+
+    </constants>
+
+    <structs>
+
+    </structs>
+
+    <requests>
+        <request cmd="611" name="set_cur_pet" desc="设置当前宠物 成功后会推送 611">
+            <field name="pet_uid" type="uint32" isarray="false" desc="设置的宠物Uid"/>
+        </request>
+
+    </requests>
+
+    <responses>
+        <response cmd="601" name="role_info" desc="英雄信息登录推送/变更推送">
+            <field name="pet_uid" type="uint32" isarray="false" desc="当前选中的宠物Uid"/>
+
+        </response>
+        <response cmd="611" name="set_cur_pet" desc="设置当前宠物返回">
+            <field name="pet_uid" type="uint32" isarray="false" desc="当前的宠物Uid"/>
+        </response>
+    </responses>
+
+</module>

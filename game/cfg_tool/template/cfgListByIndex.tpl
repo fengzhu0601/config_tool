@@ -1,0 +1,1 @@
+var cfgListBy$field_name map[$field_type][]*$cfg_name = make(map[$field_type][]*$cfg_name)

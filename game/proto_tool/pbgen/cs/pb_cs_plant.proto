@@ -1,0 +1,48 @@
+syntax = "proto3";
+package pb_cs_plant;
+
+
+
+option go_package = "game/pb/cs/pb_cs_plant";
+
+
+
+
+
+// 土地结构
+message Land {
+	uint32 CfgId= 1; // 配置ID
+	uint32 SeedId= 2; // 种子ID
+	uint32 Level= 3; // 土地等级
+	uint64 PlantingTimestamp= 4; // 种植时间戳
+}
+
+
+
+// 种植成功后会推送 402
+message ReqPlanting {
+	uint32 CfgId= 1; // 配置ID
+	uint32 SeedId= 2; // 种子ID
+}
+
+// 收获成功后会推送 402
+message ReqHarvest {
+	uint32 CfgId= 1; // 配置ID
+}
+
+// 解锁后会推送 402
+message ReqUnlock {
+	uint32 CfgId= 1; // 配置ID
+}
+
+
+
+// 种植系统登录推送
+message RepPlantInfo {
+	repeated Land Lands= 1; // 解锁土地列表
+}
+
+// 种植土地更新
+message RepPlantUpdate {
+	Land Land= 1; // 土地信息
+}

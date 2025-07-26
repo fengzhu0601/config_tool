@@ -1,0 +1,37 @@
+syntax = "proto3";
+package pb_cs_equip;
+
+
+
+option go_package = "game/pb/cs/pb_cs_equip";
+
+
+
+
+
+// 装备结构
+message Equip {
+	uint32 Uid= 1; // 装备UID
+	uint32 CfgId= 2; // 配置ID
+	uint32 Grade= 3; // 品质
+	uint32 Level= 4; // 等级
+}
+
+
+
+
+
+// 装备信息登录批量推送
+message RepAllEquips {
+	repeated Equip Equips= 1; // 装备信息
+}
+
+// 装备更新
+message RepUpdateEquips {
+	repeated Equip Equips= 1; // 装备信息
+}
+
+// 装备删除
+message RepDelEquips {
+	repeated uint32 Uids= 1; // 删除的装备uid
+}

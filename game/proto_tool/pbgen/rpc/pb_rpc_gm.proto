@@ -1,0 +1,60 @@
+syntax = "proto3";
+package pb_rpc_gm;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_gm";
+
+
+// 前端服务器显示状态
+enum ShowState{
+	Normal = 0; // 正常
+	Busy = 1; // 繁忙
+	Crowd = 2; // 拥挤
+	Close = 3; // 维护中
+	Recommend = 4; // 推荐
+}
+
+// 服务器状态
+enum ServerState{
+	Running = 0; // 开启
+	Down = 1; // 关闭
+}
+
+
+
+
+// 区服管理信息
+message Gm {
+	uint32 SerId= 1; // 区服ID
+	string SerName= 2; // 区服名称
+	ShowState ShowState= 3; // 前端展示状态
+	ServerState State= 4; // 后端状态
+	string GameVersion= 5; // 版本号
+}
+
+
+
+// gm信息更新:acc
+message ReqGmUpdate {
+	repeated Gm Gms= 1; // 区服管理信息列表
+}
+
+// 账号信息更新:acc
+message ReqAccReport {
+	uint32 SerId= 1; // 区服ID
+	uint32 AccNum= 2; // 账号数
+	uint32 OnlineNum= 3; // 在线人数
+}
+
+
+
+// gm信息更新返回
+message RepGmUpdate {
+	bool Result= 1; // 更新结果
+}
+
+// 账号信息更新:acc
+message RepAccReport {
+	bool Result= 1; // 更新结果
+}

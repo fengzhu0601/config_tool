@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="plant" desc="种植系统">
+    <constants>
+
+    </constants>
+
+    <structs>
+        <struct name="land" desc="土地结构">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="seed_id" type="uint32" isarray="false" desc="种子ID"/>
+            <field name="level" type="uint32" isarray="false" desc="土地等级"/>
+            <field name="planting_timestamp" type="uint64" isarray="false" desc="种植时间戳"/>
+        </struct>
+    </structs>
+
+    <requests>
+        <request cmd="411" name="planting" desc="种植成功后会推送 402">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="seed_id" type="uint32" isarray="false" desc="种子ID"/>
+        </request>
+
+        <request cmd="412" name="harvest" desc="收获成功后会推送 402">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+        </request>
+
+        <request cmd="413" name="unlock" desc="解锁后会推送 402">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+        </request>
+
+    </requests>
+
+    <responses>
+        <response cmd="401" name="plant_info" desc="种植系统登录推送">
+            <field name="lands" type="land" isarray="true" desc="解锁土地列表"/>
+        </response>
+
+        <response cmd="402" name="plant_update" desc="种植土地更新">
+            <field name="land" type="land" isarray="false" desc="土地信息"/>
+        </response>
+    </responses>
+
+</module>

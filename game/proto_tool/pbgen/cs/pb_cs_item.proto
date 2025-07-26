@@ -1,0 +1,72 @@
+syntax = "proto3";
+package pb_cs_item;
+
+
+
+option go_package = "game/pb/cs/pb_cs_item";
+
+
+// 物品类型
+enum ItemType{
+	Source = 0; // 资源
+	Equip = 1; // 装备
+	Box = 2; // 宝箱
+	Role = 3; // 英雄道具
+	Pet = 4; // 宠物道具
+	Land = 5; // 地块道具
+	Seed = 6; // 种子道具
+	Fruit = 7; // 果实道具
+}
+
+// 物品ID
+enum ItemId{
+	None = 0; // 未定义
+	Diamond = 101; // 钻石
+	Gold = 102; // 金币
+	Exp = 103; // 经验
+	Stamina = 104; // 体力
+	SevenDayPoint = 108; // 七日活跃积分
+}
+
+// 宝箱类型
+enum BoxType{
+	No = 0; // 无效果
+	Choose = 1; // 自选
+	Auto = 2; // 自动使用
+}
+
+
+
+
+// 物品结构
+message Item {
+	uint32 CfgId= 1; // 配置ID
+	uint64 StackNum= 2; // 物品堆叠数量
+}
+
+
+
+// 使用物品
+message ReqUseItem {
+	uint32 CfgId= 1; // 物品配置ID
+	uint32 Num= 2; // 使用物品次数
+	repeated Item ItemsList= 3; // 物品信息
+}
+
+
+
+// 物品信息登录批量推送
+message RepAllItems {
+	repeated Item ItemsList= 1; // 物品信息
+}
+
+// 物品增量更新
+message RepUpdateItems {
+	repeated Item ItemsList= 1; // 物品信息
+}
+
+// 使用物品返回
+message RepUseItem {
+	uint32 CfgId= 1; // 物品配置ID
+	uint32 Num= 2; // 使用物品次数
+}

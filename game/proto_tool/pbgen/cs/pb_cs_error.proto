@@ -1,0 +1,65 @@
+syntax = "proto3";
+package pb_cs_error;
+
+
+
+option go_package = "game/pb/cs/pb_cs_error";
+
+
+// 错误码,前1000给服务器内部用
+enum Code{
+	ServerNotExit = 0; // 服务器不存在
+	ServerNotConn = 1; // 服务器未连接
+	RpcTimeout = 2; // rpc访问超时
+	RpcServerError = 3; // 目标服发生错误
+	RpcLocalNotRegist = 4; // 本地Rpc消息没注册
+	RpcNotRegist = 5; // 远程Rpc消息没注册
+	RpcAccExit = 6; // 角色已存在，无法创建角色
+	ServerWorkerNotExit = 7; // 进程不存在
+	ServerCantFind = 8; // 没有可用服务器
+	ServerAccNotExit = 9; // 角色不存在
+	ServerError = 1001; // 服务器内部错误:%1s
+	MsgError = 1002; // 未定义cmd:%1i
+	NameEmptyError = 1003; // 昵称为空
+	NameInvalidLenError = 1004; // 无效的昵称长度
+	NameInvalidError = 1005; // 昵称存在非法字符
+	NameUsedError = 1006; // 该昵称已被使用
+	ItemNotEnough = 1007; // %1s不足
+	ItemUseIlleganotEnoughlError = 1008; // 道具非法使用
+	ConfigError = 1009; // 配置错误
+	RewardUnmetError = 1010; // 未满足领取条件
+	RewardReceivedError = 1011; // 该奖励已领取
+	MailNotExit = 1141; // 邮件不存在
+	ChargeActTypeClose = 1151; // 该活动类型未开放充值
+	ChargeProductNull = 1152; // 商品不存在
+	ChargeClose = 1153; // 充值入口未开放
+	ChargeGenOrderErr = 1154; // 生成订单号失败
+	ChargeGetOrderErr = 1155; // 获取订单号失败
+	ChargeNotExit = 1156; // 订单不存在
+	ChargeHadDeliver = 1157; // 订单已发货
+	ChargeInfoNotMatch = 1158; // 订单核对失败
+	ChargeProductNotExit = 1159; // 商品已过期
+	ChargeGearError = 1160; // 档位配置不存在
+	GiftCodeError = 1171; // 兑换码错误
+	FirstChargeStatusErr = 1181; // 没有可领取的首充奖励
+	ShopNull = 1300; // 商店未开启
+	ShopTimeFreeLimit = 1301; // 免费次数不足
+	ShopTimeVideoLimit = 1302; // 广告次数不足
+	ShopTimeBuyLimit = 1303; // 购买次数不足
+	ShopTimeGoodNull = 1304; // 商品不存在
+	Plant = 1305; // 商品不存在
+}
+
+
+
+
+
+
+
+
+// 错误码提示
+message RepError {
+	Code Code= 1; // 错误码
+	repeated uint32 ArgsIntList= 2; // int参数列表
+	repeated string ArgsStrList= 3; // string参数列表
+}

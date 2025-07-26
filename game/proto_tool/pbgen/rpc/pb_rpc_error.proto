@@ -1,0 +1,21 @@
+syntax = "proto3";
+package pb_rpc_error;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_error";
+
+
+
+
+
+
+
+
+
+// 错误码提示
+message RepError {
+	uint32 Code= 1; // 错误码
+	repeated uint32 ArgsIntList= 2; // int参数列表
+	repeated string ArgsStrList= 3; // string参数列表
+}

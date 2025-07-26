@@ -1,0 +1,33 @@
+
+ç
+pb_cs_pet.proto	pb_cs_pet"É
+Pet
+Uid (RUid
+CfgId (RCfgId
+Level (RLevel
+Exp (RExp
+Wears (RWears
+Satiety (RSatiety$
+FeedTimestamp (RFeedTimestamp
+	FeedTimes (R	FeedTimes"C
+ReqPutOnClothes
+Uid (RUid
+
+ClothesUid (R
+ClothesUid"E
+ReqTakeOffClothes
+Uid (RUid
+
+ClothesUid (R
+ClothesUid"6
+
+ReqFeedPet
+Uid (RUid
+FoodId (RFoodId"0
+
+RepPetInfo"
+Pets (2.pb_cs_pet.PetRPets"2
+RepPetUpdate"
+Pets (2.pb_cs_pet.PetRPets"3
+RepOnePetUpdate 
+Pet (2.pb_cs_pet.PetRPetBZgame/pb/cs/pb_cs_petbproto3

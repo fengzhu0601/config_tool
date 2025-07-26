@@ -1,0 +1,1 @@
+tmpCfgListBy$field_name := make(map[$field_type][]*$cfg_name)

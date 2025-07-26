@@ -1,0 +1,34 @@
+syntax = "proto3";
+package pb_cs_reward;
+
+
+
+option go_package = "game/pb/cs/pb_cs_reward";
+
+
+// 展示类型
+enum ShowType{
+	None = 0; // 不展示
+	Common = 1; // 通用弹窗
+}
+
+
+
+
+// 道具奖励列表
+message ItemReward {
+	uint32 CfgId= 1; // 配置ID
+	uint64 StackNum= 2; // 数量
+	uint32 Grade= 3; // 品质
+	uint32 Level= 4; // 等级
+}
+
+
+
+
+
+// 奖励弹窗
+message RepShowRewards {
+	ShowType ShowType= 1; // 展示类型
+	repeated ItemReward Rewards= 2; // 奖励列表
+}

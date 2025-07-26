@@ -1,0 +1,32 @@
+
+Ð
+pb_cs_account.protopb_cs_account"
+ReqRandomName"#
+ReqChangeName
+Name (	RName"!
+ReqGiftCode
+Code (	RCode"'
+ReqFeedBack
+Content (	RContent"Å
+RepPlayerInfo
+Sid (RSid
+Name (	RName
+Level (RLevel
+Exp (RExp
+SerId (RSerId
+ShowId (RShowId
+UserTag (RUserTag
+
+CreateTime (R
+CreateTime"#
+RepRandomName
+Name (	RName"#
+RepChangeName
+Name (	RName""
+
+RepLevelUp
+Level (RLevel"?
+RepGiftCode
+Result (RResult
+FailMsg (	RFailMsg"
+RepFeedBackBZgame/pb/cs/pb_cs_accountbproto3

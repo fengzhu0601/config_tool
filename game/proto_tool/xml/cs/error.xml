@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="error" desc="错误码">
+
+    <constants>
+        <constant name="CODE" public="true" desc="错误码,前1000给服务器内部用">
+
+            <field name="SERVER_NOT_EXIT" value="0" desc="服务器不存在"/>
+            <field name="SERVER_NOT_CONN" value="1" desc="服务器未连接"/>
+            <field name="RPC_TIMEOUT" value="2" desc="rpc访问超时"/>
+            <field name="RPC_SERVER_ERROR" value="3" desc="目标服发生错误"/>
+            <field name="RPC_LOCAL_NOT_REGIST" value="4" desc="本地Rpc消息没注册"/>
+            <field name="RPC_NOT_REGIST" value="5" desc="远程Rpc消息没注册"/>
+            <field name="RPC_ACC_EXIT" value="6" desc="角色已存在，无法创建角色"/>
+            <field name="SERVER_WORKER_NOT_EXIT" value="7" desc="进程不存在"/>
+            <field name="SERVER_CANT_FIND" value="8" desc="没有可用服务器"/>
+            <field name="SERVER_ACC_NOT_EXIT" value="9" desc="角色不存在"/>
+
+            <field name="SERVER_ERROR" value="1001" desc="服务器内部错误:%1s"/>
+            <field name="MSG_ERROR" value="1002" desc="未定义cmd:%1i"/>
+            <field name="NAME_EMPTY_ERROR" value="1003" desc="昵称为空"/>
+            <field name="NAME_INVALID_LEN_ERROR" value="1004" desc="无效的昵称长度"/>
+            <field name="NAME_INVALID_ERROR" value="1005" desc="昵称存在非法字符"/>
+            <field name="NAME_USED_ERROR" value="1006" desc="该昵称已被使用"/>
+            <field name="ITEM_NOT_ENOUGH" value="1007" desc="%1s不足"/>
+            <field name="ITEM_USE_ILLEGANOT_ENOUGHL_ERROR" value="1008" desc="道具非法使用"/>
+            <field name="CONFIG_ERROR" value="1009" desc="配置错误"/>
+
+            <field name="REWARD_UNMET_ERROR" value="1010" desc="未满足领取条件"/>
+            <field name="REWARD_RECEIVED_ERROR" value="1011" desc="该奖励已领取"/>
+
+            <field name="MAIL_NOT_EXIT" value="1141" desc="邮件不存在"/>
+
+            <field name="CHARGE_ACT_TYPE_CLOSE" value="1151" desc="该活动类型未开放充值"/>
+            <field name="CHARGE_PRODUCT_NULL" value="1152" desc="商品不存在"/>
+            <field name="CHARGE_CLOSE" value="1153" desc="充值入口未开放"/>
+            <field name="CHARGE_GEN_ORDER_ERR" value="1154" desc="生成订单号失败"/>
+            <field name="CHARGE_GET_ORDER_ERR" value="1155" desc="获取订单号失败"/>
+            <field name="CHARGE_NOT_EXIT" value="1156" desc="订单不存在"/>
+            <field name="CHARGE_HAD_DELIVER" value="1157" desc="订单已发货"/>
+            <field name="CHARGE_INFO_NOT_MATCH" value="1158" desc="订单核对失败"/>
+            <field name="CHARGE_PRODUCT_NOT_EXIT" value="1159" desc="商品已过期"/>
+            <field name="CHARGE_GEAR_ERROR" value="1160" desc="档位配置不存在"/>
+
+            <field name="GIFT_CODE_ERROR" value="1171" desc="兑换码错误"/>
+
+            <field name="FIRST_CHARGE_STATUS_ERR" value="1181" desc="没有可领取的首充奖励"/>
+            
+
+            <field name="SHOP_NULL" value="1300" desc="商店未开启"/>
+            <field name="SHOP_TIME_FREE_LIMIT" value="1301" desc="免费次数不足"/>
+            <field name="SHOP_TIME_VIDEO_LIMIT" value="1302" desc="广告次数不足"/>
+            <field name="SHOP_TIME_BUY_LIMIT" value="1303" desc="购买次数不足"/>
+            <field name="SHOP_TIME_GOOD_NULL" value="1304" desc="商品不存在"/>
+
+            <field name="PLANT_" value="1305" desc="商品不存在"/>
+
+
+
+        </constant>
+    </constants>
+
+    <structs>
+
+    </structs>
+
+    <requests>
+
+    </requests>
+
+    <responses>
+        <response cmd="1" name="error" desc="错误码提示">
+            <field name="code" type="CODE" isarray="false" desc="错误码"/>
+            <field name="args_int_list" type="uint32" isarray="true" desc="int参数列表"/>
+            <field name="args_str_list" type="string" isarray="true" desc="string参数列表"/>
+        </response>
+    </responses>
+
+</module>
+

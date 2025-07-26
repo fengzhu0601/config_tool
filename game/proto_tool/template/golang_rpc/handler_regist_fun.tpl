@@ -1,0 +1,1 @@
+	router.RegistRpc($cmd, $fun)

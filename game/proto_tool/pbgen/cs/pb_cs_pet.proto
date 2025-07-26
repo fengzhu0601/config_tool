@@ -1,0 +1,59 @@
+syntax = "proto3";
+package pb_cs_pet;
+
+
+
+option go_package = "game/pb/cs/pb_cs_pet";
+
+
+
+
+
+// 宠物结构
+message Pet {
+	uint32 Uid= 1; // 宠物UID
+	uint32 CfgId= 2; // 配置ID
+	uint32 Level= 3; // 等级
+	uint32 Exp= 4; // 经验
+	repeated uint32 Wears= 5; // 穿戴列表
+	uint32 Satiety= 6; // 饱食度
+	int64 FeedTimestamp= 7; // 喂食时间戳
+	uint32 FeedTimes= 8; // 喂食剩余次数
+}
+
+
+
+// 穿戴服装请求 成功后会推送 1202
+message ReqPutOnClothes {
+	uint32 Uid= 1; // 宠物UID
+	uint32 ClothesUid= 2; // 服装Uid
+}
+
+// 脱下服装请求 成功后会推送 1202
+message ReqTakeOffClothes {
+	uint32 Uid= 1; // 宠物UID
+	uint32 ClothesUid= 2; // 服装Uid
+}
+
+// 喂养宠物 成功后会推送1202
+message ReqFeedPet {
+	uint32 Uid= 1; // 宠物UID
+	uint32 FoodId= 2; // 食物ID
+}
+
+
+
+// 宠物信息登录推送
+message RepPetInfo {
+	repeated Pet Pets= 1; // 宠物列表
+}
+
+// 宠物信息变更推送
+message RepPetUpdate {
+	repeated Pet Pets= 1; // 宠物列表
+}
+
+// 单个宠物信息变更推送
+message RepOnePetUpdate {
+	Pet Pet= 1; // 宠物信息
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+package pb_rpc_gmail;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_gmail";
+
+
+
+
+
+// 道具奖励列表
+message ItemReward {
+	uint32 CfgId= 1; // 配置ID
+	uint64 StackNum= 2; // 数量
+	uint32 Grade= 3; // 品质
+	uint32 Level= 4; // 等级
+}
+
+// 邮件
+message Gmail {
+	string Title= 1; // 标题
+	string Content= 2; // 内容
+	repeated ItemReward Rewards= 3; // 奖励列表
+}
+
+
+
+// 发送全局邮件
+message ReqSendGmail {
+	uint32 SerId= 1; // 服务器ID
+	Gmail Mail= 2; // 邮件
+}
+
+// 发送个人邮件
+message ReqSendUserMail {
+	uint32 SerId= 1; // 服务器ID
+	uint32 Sid= 2; // 服务器ID
+	Gmail Mail= 3; // 邮件
+}
+
+
+
+// 发送全局邮件返回
+message RepSendGmail {
+	bool Result= 1; // 发送结果
+}
+
+// 发送个人邮件
+message RepSendUserMail {
+	bool Result= 1; // 发送结果
+}

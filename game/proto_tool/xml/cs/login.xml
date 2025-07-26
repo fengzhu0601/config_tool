@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="login" desc="登录">
+    <constants>
+        <constant name="SDK" type="uint32" public="true" desc="SDK类型">
+            <field name="TEST" value="9999" desc="内网(无登录验证)"/>
+            <field name="PET_WORLD" value="2" desc="宠物世界平台"/>
+        </constant>
+        <constant name="LOGIN_RESULT" public="true" desc="登陆返回">
+            <field name="SUCCESS" value="0" desc="登陆成功"/>
+            <field name="AUTH_FAILED" value="1" desc="SDK验证失败"/>
+            <field name="RECONNECT_FAIL" value="2" desc="超过最大重连时间"/>
+            <field name="SDK_ERROR" value="3" desc="未接入该SDK"/>
+            <field name="USER_NULL" value="4" desc="账号为空"/>
+            <field name="TOKEN_NULL" value="5" desc="Token为空"/>
+        </constant>
+        <constant name="LOGIN_ACC_STATUS" public="true" desc="账号当前状态">
+            <field name="NORMAL" value="0" desc="普通登录"/>
+            <field name="CREATE" value="1" desc="创角登录"/>
+        </constant>
+        <constant name="RECONNECT_TYPE" public="true" desc="重连类型">
+            <field name="COMMON" value="0" desc="普通"/>
+            <field name="QUICK" value="1" desc="快速"/>
+        </constant>
+    </constants>
+    <structs>
+
+    </structs>
+    <requests>
+        <request cmd="100" name="login" desc="登陆">
+            <field name="sdk_id" type="SDK" isarray="false" desc="接入的sdkID,游戏自定义 const@SDK"/>
+            <field name="user" type="string" isarray="false" desc="平台账号"/>
+            <field name="imei" type="string" isarray="false" desc="设备号"/>
+            <field name="ser_id" type="uint32" isarray="false" desc="服务器ID"/>
+            <field name="is_white" type="bool" isarray="false" desc="是否白名单"/>
+            <field name="token" type="string" isarray="false" desc="token"/>
+            <field name="version" type="string" isarray="false" desc="版本号"/>
+            <field name="os" type="uint8" isarray="false" desc="操作系统"/>
+            <field name="sign" type="string" isarray="false" desc="签名,json_data+key的MD5,服务器用来做校验"/>
+            <field name="json_data" type="string" isarray="false" desc="前端从平台获取的用户数据信息"/>
+        </request>
+
+
+        <request cmd="101" name="ping" desc="ping同步时间">
+            <field name="time" type="uint32" isarray="false" desc="客户端发起请求时间戳"/>
+        </request>
+        <request cmd="102" name="reconnect" desc="断线重连(上次离线后n小时内可用,绕过sdk登陆)">
+            <field name="sid" type="uint32" isarray="false" desc="玩家ID"/>
+            <field name="imei" type="string" isarray="false" desc="设备号"/>
+            <field name="type" type="RECONNECT_TYPE" isarray="false" desc="重连类型"/>
+        </request>
+
+        <request cmd="106" name="gate_init_player" desc="网关服请求初始化player">
+            <field name="sid" type="uint32" isarray="false" desc="玩家ID"/>
+            <field name="gate_id" type="uint16" isarray="false" desc="网关ID"/>
+        </request>
+
+        <request cmd="107" name="client_update_account" desc="客户端通知修改数据">
+            <field name="json_data" type="string" isarray="false" desc="前端从平台获取的用户数据信息"/>
+        </request>
+
+    </requests>
+    <responses>
+        <response cmd="100" name="login_result" desc="登陆返回">
+            <field name="errorCode" type="LOGIN_RESULT" isarray="false" desc="状态码"/>
+            <field name="sid" type="uint32" isarray="false" desc="玩家ID"/>
+            <field name="ser_id" type="uint16" isarray="false" desc="服务器ID"/>
+            <field name="acc_status" type="LOGIN_ACC_STATUS" isarray="false" desc="账号当前状态"/>
+            <field name="msg" type="string" isarray="false" desc="验证失败时的附带信息"/>
+            <field name="time" type="uint32" isarray="false" desc="服务器收到请求时间戳"/>
+            <field name="is_gm" type="bool" isarray="false" desc="是否gm账号"/>
+        </response>
+
+        <response cmd="101" name="pong" desc="pong同步时间">
+            <field name="time" type="uint32" isarray="false" desc="服务器收到请求时间戳"/>
+        </response>
+
+        <request cmd="102" name="reconnect" desc="断线重连结果">
+            <field name="type" type="RECONNECT_TYPE" isarray="false" desc="重连类型"/>
+            <field name="success" type="bool" isarray="false" desc="是否成功"/>
+        </request>
+
+        <response cmd="104" name="login_info_finish" desc="所有登陆协议发放完成通知">
+        </response>
+
+        <response cmd="106" name="gate_init_player" desc="网关服请求初始化player">
+            <field name="sid" type="uint32" isarray="false" desc="玩家ID"/>
+        </response>
+
+    </responses>
+</module>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="gmail" desc="全局邮件系统">
+	<constants>
+	</constants>
+	<structs>
+        <struct name="item_reward" desc="道具奖励列表">
+                <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+                <field name="stack_num" type="uint64" isarray="false" desc="数量"/>
+                <field name="grade" type="uint8" isarray="false" desc="品质"/>
+                <field name="level" type="uint8" isarray="false" desc="等级"/>
+        </struct>
+        <struct name="gmail" desc="邮件">
+			<field name="title" type="string" isarray="false" desc="标题"/>
+			<field name="content" type="string" isarray="false" desc="内容"/>
+			<field name="rewards" type="item_reward" isarray="true" desc="奖励列表"/>
+		</struct>
+	</structs>
+	<requests>
+
+        <request cmd="301" name="send_gmail" desc="发送全局邮件">
+			<field name="ser_id" type="uint16" isarray="false" desc="服务器ID"/>
+            <field name="mail" type="gmail" isarray="false" desc="邮件"/>
+		</request>
+		<request cmd="302" name="send_user_mail" desc="发送个人邮件">
+			<field name="ser_id" type="uint16" isarray="false" desc="服务器ID"/>
+			<field name="sid" type="uint16" isarray="false" desc="服务器ID"/>
+            <field name="mail" type="gmail" isarray="false" desc="邮件"/>
+		</request>
+	</requests>
+	<responses>
+		<response cmd="301" name="send_gmail" desc="发送全局邮件返回">
+			<field name="result" type="bool" isarray="false" desc="发送结果"/>
+		</response>
+		<response cmd="302" name="send_user_mail" desc="发送个人邮件">
+			<field name="result" type="bool" isarray="false" desc="发送结果"/>
+		</response>
+	</responses>
+</module>

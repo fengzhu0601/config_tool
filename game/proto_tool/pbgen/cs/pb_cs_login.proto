@@ -1,0 +1,105 @@
+syntax = "proto3";
+package pb_cs_login;
+
+
+
+option go_package = "game/pb/cs/pb_cs_login";
+
+
+// SDK类型
+enum Sdk{
+	UNDEFINED = 0; // 未定义
+	Test = 9999; // 内网(无登录验证)
+	PetWorld = 2; // 宠物世界平台
+}
+
+// 登陆返回
+enum LoginResult{
+	Success = 0; // 登陆成功
+	AuthFailed = 1; // SDK验证失败
+	ReconnectFail = 2; // 超过最大重连时间
+	SdkError = 3; // 未接入该SDK
+	UserNull = 4; // 账号为空
+	TokenNull = 5; // Token为空
+}
+
+// 账号当前状态
+enum LoginAccStatus{
+	Normal = 0; // 普通登录
+	Create = 1; // 创角登录
+}
+
+// 重连类型
+enum ReconnectType{
+	Common = 0; // 普通
+	Quick = 1; // 快速
+}
+
+
+
+
+
+
+// 登陆
+message ReqLogin {
+	Sdk SdkId= 1; // 接入的sdkID,游戏自定义 const@SDK
+	string User= 2; // 平台账号
+	string Imei= 3; // 设备号
+	uint32 SerId= 4; // 服务器ID
+	bool IsWhite= 5; // 是否白名单
+	string Token= 6; // token
+	string Version= 7; // 版本号
+	uint32 Os= 8; // 操作系统
+	string Sign= 9; // 签名,json_data+key的MD5,服务器用来做校验
+	string JsonData= 10; // 前端从平台获取的用户数据信息
+}
+
+// ping同步时间
+message ReqPing {
+	uint32 Time= 1; // 客户端发起请求时间戳
+}
+
+// 断线重连(上次离线后n小时内可用,绕过sdk登陆)
+message ReqReconnect {
+	uint32 Sid= 1; // 玩家ID
+	string Imei= 2; // 设备号
+	ReconnectType Type= 3; // 重连类型
+}
+
+// 网关服请求初始化player
+message ReqGateInitPlayer {
+	uint32 Sid= 1; // 玩家ID
+	uint32 GateId= 2; // 网关ID
+}
+
+// 客户端通知修改数据
+message ReqClientUpdateAccount {
+	string JsonData= 1; // 前端从平台获取的用户数据信息
+}
+
+
+
+// 登陆返回
+message RepLoginResult {
+	LoginResult Errorcode= 1; // 状态码
+	uint32 Sid= 2; // 玩家ID
+	uint32 SerId= 3; // 服务器ID
+	LoginAccStatus AccStatus= 4; // 账号当前状态
+	string Msg= 5; // 验证失败时的附带信息
+	uint32 Time= 6; // 服务器收到请求时间戳
+	bool IsGm= 7; // 是否gm账号
+}
+
+// pong同步时间
+message RepPong {
+	uint32 Time= 1; // 服务器收到请求时间戳
+}
+
+// 所有登陆协议发放完成通知
+message RepLoginInfoFinish {
+}
+
+// 网关服请求初始化player
+message RepGateInitPlayer {
+	uint32 Sid= 1; // 玩家ID
+}

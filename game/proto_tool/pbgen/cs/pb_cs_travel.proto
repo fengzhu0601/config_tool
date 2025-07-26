@@ -1,0 +1,51 @@
+syntax = "proto3";
+package pb_cs_travel;
+
+
+
+option go_package = "game/pb/cs/pb_cs_travel";
+
+
+// 旅行事件类型
+enum EventType{
+	EventNone = 0; // 忽略
+	PetFeed = 1; // 宠物投喂
+	ReceiveRewards = 2; // 领取奖励
+}
+
+// 条件表
+enum ConditionType{
+	ConditionNone = 0; // 忽略
+	Satiety = 1; // 饱食度
+	Charm = 2; // 魅力值
+}
+
+
+
+
+// 旅行结构
+message Travel {
+	uint32 CfgId= 1; // 配置ID
+	uint32 PetUid= 2; // 宠物UID
+	uint64 StartTimestamp= 3; // 触发旅行时间戳
+}
+
+
+
+// 领取旅行奖励
+message ReqGetReward {
+	uint32 CfgId= 1; // 配置ID
+	uint32 PetUid= 2; // 宠物UID
+}
+
+
+
+// 旅行系统登录推送
+message RepTravelInfo {
+	repeated Travel Travels= 1; // 宠物旅行列表
+}
+
+// 旅行更新
+message RepTravelUpdate {
+	Travel Travel= 1; // 宠物旅行
+}

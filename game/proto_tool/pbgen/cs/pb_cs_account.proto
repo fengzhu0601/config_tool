@@ -1,0 +1,70 @@
+syntax = "proto3";
+package pb_cs_account;
+
+
+
+option go_package = "game/pb/cs/pb_cs_account";
+
+
+
+
+
+
+
+// 请求随机名字和改名消耗
+message ReqRandomName {
+}
+
+// 玩家改名
+message ReqChangeName {
+	string Name= 1; // 名字
+}
+
+// 输入兑换码
+message ReqGiftCode {
+	string Code= 1; // 兑换码
+}
+
+// 反馈
+message ReqFeedBack {
+	string Content= 1; // 反馈内容
+}
+
+
+
+// 账号信息登录推送(必要协议都发完才发这个，接着会发非必要的协议)
+message RepPlayerInfo {
+	uint32 Sid= 1; // 角色ID
+	string Name= 2; // 名字
+	int32 Level= 3; // 等级
+	uint32 Exp= 4; // 经验
+	uint32 SerId= 5; // 服务器ID
+	uint32 ShowId= 6; // 服务器展示ID
+	uint32 UserTag= 7; // 用户分类(用来区分不同难度)
+	uint32 CreateTime= 8; // 注册时间
+}
+
+// 返回一个随机名字和改名消耗
+message RepRandomName {
+	string Name= 1; // 玩家名字
+}
+
+// 玩家改名成功返回
+message RepChangeName {
+	string Name= 1; // 玩家名字
+}
+
+// 玩家等级变化,或者经验变化推送
+message RepLevelUp {
+	int32 Level= 1; // 等级
+}
+
+// 兑换码返回
+message RepGiftCode {
+	bool Result= 1; // 是否使用成功
+	string FailMsg= 2; // 失败提示
+}
+
+// 反馈成功返回
+message RepFeedBack {
+}

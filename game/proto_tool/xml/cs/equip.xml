@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="equip" desc="装备">
+    <constants>    
+    </constants>
+    <structs>
+        <struct name="equip" desc="装备结构">
+            <field name="uid" type="uint32" isarray="false" desc="装备UID"/>
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="grade" type="uint8" isarray="false" desc="品质"/>
+            <field name="level" type="uint8" isarray="false" desc="等级"/>
+        </struct>
+    </structs>
+
+    <requests>
+    </requests>
+
+    <responses>
+        <response cmd="800" name="all_equips" desc="装备信息登录批量推送">
+            <field name="equips" type="equip" isarray="true" desc="装备信息"/>
+        </response>
+        <response cmd="801" name="update_equips" desc="装备更新">
+            <field name="equips" type="equip" isarray="true" desc="装备信息"/>
+        </response>
+        <response cmd="802" name="del_equips" desc="装备删除">
+            <field name="uids" type="uint32" isarray="true" desc="删除的装备uid"/>
+        </response>
+    </responses>
+
+</module>
+

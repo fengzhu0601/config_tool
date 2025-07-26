@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="error" desc="错误码">
+
+	<constants>
+
+	</constants>
+
+	<structs>
+
+	</structs>
+
+	<requests>
+
+	</requests>
+
+	<responses>
+		<response cmd="1" name="error" desc="错误码提示">
+			<field name="code" type="uint32" isarray="false" desc="错误码"/>
+            <field name="args_int_list" type="uint32" isarray="true" desc="int参数列表"/>
+            <field name="args_str_list" type="string" isarray="true" desc="string参数列表"/>
+		</response>
+	</responses>
+
+</module>
+

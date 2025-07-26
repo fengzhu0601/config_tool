@@ -1,0 +1,19 @@
+[
+ {
+  "PetId": 100000,
+  "Name": "ApeTestPet001",
+  "Desc": "Monkey like eat banana",
+  "LockDesc": "初始宠物",
+  "Model": "ApeBody.prefab",
+  "Speed": 300,
+  "Feed": 80,
+  "Action1": "houzi_weixiao",
+  "Action2": "houzi_tiaowu",
+  "FeedTime": 5,
+  "MaxSatiation": 100,
+  "HungerTime": 30,
+  "HungerLose": 5,
+  "HeadIcon": "Ape.png",
+  "Mood": 60
+ }
+]

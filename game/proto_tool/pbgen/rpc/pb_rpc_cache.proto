@@ -1,0 +1,32 @@
+syntax = "proto3";
+package pb_rpc_cache;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_cache";
+
+
+// 性别
+enum Sex{
+	None = 0; // 未定义性别
+	Man = 1; // 男
+	Woman = 2; // 女
+}
+
+
+
+
+
+
+// cache查找
+message ReqCacheLookup {
+	string Name= 1; // tab
+	uint32 Sid= 2; // sid
+}
+
+
+
+// cache查找返回
+message RepCacheLookup {
+	uint32 Sid= 1; // sid
+}

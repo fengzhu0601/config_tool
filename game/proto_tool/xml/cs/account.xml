@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="account" desc="账号系统">
+    <constants>
+        
+    </constants>
+    <structs>
+
+    </structs>
+    <requests>
+
+        <request cmd="203" name="random_name" desc="请求随机名字和改名消耗">
+        </request>
+        <request cmd="204" name="change_name" desc="玩家改名">
+            <field name="name" type="string" isarray="false" desc="名字"/>
+        </request>
+
+        <request cmd="206" name="gift_code" desc="输入兑换码">
+            <field name="code" type="string" isarray="false" desc="兑换码"/>
+        </request>
+
+        <request cmd="207" name="feed_back" desc="反馈">
+            <field name="content" type="string" isarray="false" desc="反馈内容"/>
+        </request>
+ 
+    </requests>
+    <responses>
+
+        <response cmd="201" name="player_info" desc="账号信息登录推送(必要协议都发完才发这个，接着会发非必要的协议)">
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+            <field name="name" type="string" isarray="false" desc="名字"/>
+            <field name="level" type="int16" isarray="false" desc="等级"/>
+            <field name="exp" type="uint32" isarray="false" desc="经验"/>
+            <field name="ser_id" type="uint32" isarray="false" desc="服务器ID"/>
+            <field name="show_id" type="uint16" isarray="false" desc="服务器展示ID"/>
+            <field name="user_tag" type="uint16" isarray="false" desc="用户分类(用来区分不同难度)"/>
+            <field name="create_time" type="uint32" isarray="false" desc="注册时间"/>
+        </response>
+       
+        <response cmd="203" name="random_name" desc="返回一个随机名字和改名消耗">
+            <field name="name" type="string" isarray="false" desc="玩家名字"/>
+        </response>
+        <response cmd="204" name="change_name" desc="玩家改名成功返回">
+            <field name="name" type="string" isarray="false" desc="玩家名字"/>
+        </response>
+        <response cmd="205" name="level_up" desc="玩家等级变化,或者经验变化推送">
+            <field name="level" type="int16" isarray="false" desc="等级"/>
+        </response>
+
+        <response cmd="206" name="gift_code" desc="兑换码返回">
+            <field name="result" type="bool" isarray="false" desc="是否使用成功"/>
+            <field name="fail_msg" type="string" isarray="false" desc="失败提示"/>
+        </response>
+
+        <response cmd="207" name="feed_back" desc="反馈成功返回">
+        </response>
+
+    </responses>
+</module>

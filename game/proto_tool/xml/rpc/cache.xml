@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="cache" desc="账号系统">
+	<constants>
+        <constant name="SEX" public="true" desc="性别">
+			<field name="NONE" value="0" desc="未定义性别"/>
+			<field name="MAN" value="1" desc="男"/>
+            <field name="WOMAN" value="2" desc="女"/>
+		</constant>
+	</constants>
+	<structs>
+
+	</structs>
+	<requests>
+
+        <request cmd="101" name="cache_lookup" desc="cache查找">
+            <field name="name" type="string" isarray="false" desc="tab"/>
+			<field name="sid" type="uint32" isarray="false" desc="sid"/>
+		</request>
+	</requests>
+	<responses>
+		<response cmd="101" name="cache_lookup" desc="cache查找返回">
+			<field name="sid" type="uint32" isarray="false" desc="sid"/>
+		</response>
+
+		
+	</responses>
+</module>

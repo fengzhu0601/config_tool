@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="acc" desc="账号服务-acc_server调用">
+    <constants>
+        <constant name="SEX" public="true" desc="性别">
+            <field name="NONE" value="0" desc="未定义性别"/>
+            <field name="MAN" value="1" desc="男"/>
+            <field name="WOMAN" value="2" desc="女"/>
+        </constant>
+    </constants>
+    <structs>
+        <struct name="acc_detail" desc="角色详细信息">
+			<field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+            <field name="sdk" type="uint16" isarray="false" desc="sdk_id"/>
+            <field name="user" type="string" isarray="false" desc="sdk账号"/>
+            <field name="pid" type="string" isarray="false" desc="渠道id"/>
+            <field name="ser_id" type="uint16" isarray="false" desc="区服ID"/>
+            <field name="nickname" type="string" isarray="false" desc="昵称"/>
+            <field name="level" type="uint16" isarray="false" desc="等级"/>
+            <field name="create_time" type="uint64" isarray="false" desc="注册时间"/>
+            <field name="last_login_time" type="uint64" isarray="false" desc="上次登陆时间"/>
+            <field name="is_mute" type="bool" isarray="false" desc="是否禁言"/>
+            <field name="is_blocked" type="bool" isarray="false" desc="是否封号"/>
+		</struct>
+    </structs>
+    <requests>
+
+        <request cmd="201" name="get_acc" desc="acc-server:查询sdk账号对应sid">
+            <field name="sdk" type="uint16" isarray="false" desc="sdk_id"/>
+            <field name="user" type="string" isarray="false" desc="sdk账号"/>
+            <field name="pid" type="string" isarray="false" desc="渠道id"/>
+            <field name="ser_id" type="uint16" isarray="false" desc="区服ID"/>
+            <field name="version" type="string" isarray="false" desc="版本号"/>
+        </request>
+
+        <request cmd="202" name="create_acc" desc="game-server:创建玩家">
+            <field name="sdk" type="uint16" isarray="false" desc="sdk_id"/>
+            <field name="user" type="string" isarray="false" desc="sdk账号"/>
+            <field name="pid" type="string" isarray="false" desc="渠道id"/>
+            <field name="ser_id" type="uint16" isarray="false" desc="区服ID"/>
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </request>
+
+        <request cmd="203" name="update_acc" desc="acc-server:更新玩家数据">
+            <field name="sid" type="uint32" isarray="false" desc="玩家id"/>
+            <field name="nickname" type="string" isarray="false" desc="昵称"/>
+            <field name="sex" type="SEX" isarray="false" desc="性别"/>
+            <field name="pic" type="uint32" isarray="false" desc="头像"/>
+        </request>
+
+        <request cmd="204" name="acc_quick" desc="game-server:玩家断开连接">
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </request>
+
+        <request cmd="205" name="kick_acc_notic" desc="gateway-server:顶号通知">
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </request>
+
+        <request cmd="206" name="get_sid_acc" desc="acc-server:根据Sid获取角色数据">
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </request>
+
+        <request cmd="207" name="get_user_acc_list" desc="acc-server:根据user获取角色列表">
+            <field name="user" type="string" isarray="false" desc="sdk账号"/>
+        </request>
+
+    </requests>
+    <responses>
+        <response cmd="201" name="get_acc" desc="acc-server:查询sdk账号对应sid">
+            <field name="ser_id" type="uint16" isarray="false" desc="区服ID"/>
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+            <field name="is_create" type="bool" isarray="false" desc="是否创角"/>
+        </response>
+
+        <response cmd="202" name="create_acc" desc="game-server:创建玩家">
+            <field name="sdk" type="uint16" isarray="false" desc="sdk_id"/>
+            <field name="user" type="string" isarray="false" desc="sdk账号"/>
+            <field name="pid" type="string" isarray="false" desc="渠道id"/>
+            <field name="ser_id" type="uint16" isarray="false" desc="区服ID"/>
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </response>
+
+        <response cmd="204" name="acc_quick" desc="game-server:玩家断开连接">
+            <field name="sid" type="uint32" isarray="false" desc="角色ID"/>
+        </response>
+
+        <response cmd="206" name="get_sid_acc" desc="acc-server:根据Sid获取角色数据">
+             <field name="acc" type="acc_detail" isarray="true" desc="角色信息"/>
+        </response>
+
+        <response cmd="207" name="get_user_acc_list" desc="acc-server:根据user获取角色列表">
+            <field name="acc" type="acc_detail" isarray="true" desc="角色信息"/>
+        </response>
+
+    </responses>
+</module>

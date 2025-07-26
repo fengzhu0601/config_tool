@@ -1,0 +1,36 @@
+syntax = "proto3";
+package pb_rpc_pay;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_pay";
+
+
+
+
+
+
+
+// 发货请求
+message ReqPayBack {
+	uint32 SerId= 1; // 服务器ID
+	uint32 Sid= 2; // 玩家ID
+	uint32 Sdk= 3; // sdk
+	uint64 GameOrder= 4; // 游戏订单
+	uint32 ActType= 5; // 活动类型
+	uint32 ActId= 6; // 活动ID
+	uint32 ActProductId= 7; // 活动商品ID
+	string SdkProductId= 8; // sdk商品ID(后台商品ID)
+	string SdkOrder= 9; // sdk订单号
+	string Currency= 10; // 货币类型
+	uint32 Money= 11; // 价格(分)
+	string PayChannel= 12; // 支付渠道
+	string PayUser= 13; // 支付的sdk账号
+}
+
+
+
+// 发货成功返回
+message RepPayBack {
+	uint64 GameOrder= 1; // 游戏订单
+}

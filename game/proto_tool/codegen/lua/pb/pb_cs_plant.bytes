@@ -1,0 +1,20 @@
+
+²
+pb_cs_plant.protopb_cs_plant"x
+Land
+CfgId (RCfgId
+SeedId (RSeedId
+Level (RLevel,
+PlantingTimestamp (RPlantingTimestamp";
+ReqPlanting
+CfgId (RCfgId
+SeedId (RSeedId""
+
+ReqHarvest
+CfgId (RCfgId"!
+	ReqUnlock
+CfgId (RCfgId"7
+RepPlantInfo'
+Lands (2.pb_cs_plant.LandRLands"7
+RepPlantUpdate%
+Land (2.pb_cs_plant.LandRLandBZgame/pb/cs/pb_cs_plantbproto3

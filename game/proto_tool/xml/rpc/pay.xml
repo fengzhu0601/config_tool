@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="pay" desc="充值发货">
+	<constants>
+	</constants>
+	<structs>
+        
+	</structs>
+	<requests>
+
+        <request cmd="501" name="pay_back" desc="发货请求">
+			<field name="ser_id" type="uint16" isarray="false" desc="服务器ID"/>
+            <field name="sid" type="uint32" isarray="false" desc="玩家ID"/>
+            <field name="sdk" type="uint16" isarray="false" desc="sdk"/>
+            <field name="game_order" type="uint64" isarray="false" desc="游戏订单"/>
+            <field name="act_type" type="uint16" isarray="false" desc="活动类型"/>
+            <field name="act_id" type="uint32" isarray="false" desc="活动ID"/>
+            <field name="act_product_id" type="uint32" isarray="false" desc="活动商品ID"/>
+            <field name="sdk_product_id" type="string" isarray="false" desc="sdk商品ID(后台商品ID)"/>
+            <field name="sdk_order" type="string" isarray="false" desc="sdk订单号"/>
+            <field name="currency" type="string" isarray="false" desc="货币类型"/>
+            <field name="money" type="uint32" isarray="false" desc="价格(分)"/>
+            <field name="pay_channel" type="string" isarray="false" desc="支付渠道"/>
+            <field name="pay_user" type="string" isarray="false" desc="支付的sdk账号"/>
+		</request>
+		
+	</requests>
+	<responses>
+		<response cmd="501" name="pay_back" desc="发货成功返回">
+			<field name="game_order" type="uint64" isarray="false" desc="游戏订单"/>
+		</response>
+		
+	</responses>
+</module>

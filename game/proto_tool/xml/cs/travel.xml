@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="travel" desc="旅行系统">
+    <constants>
+        <constant name="EVENT_TYPE" public="true" desc="旅行事件类型">
+            <field name="EVENT_NONE" value="0" desc="忽略"/>
+            <field name="PET_FEED" value="1" desc="宠物投喂"/>
+            <field name="RECEIVE_REWARDS" value="2" desc="领取奖励"/>
+        </constant>
+        <constant name="CONDITION_TYPE" public="true" desc="条件表">
+            <field name="CONDITION_NONE" value="0" desc="忽略"/>
+            <field name="SATIETY" value="1" desc="饱食度"/>
+            <field name="CHARM" value="2" desc="魅力值"/>
+        </constant>
+    </constants>
+
+    <structs>
+        <struct name="travel" desc="旅行结构">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="pet_uid" type="uint32" isarray="false" desc="宠物UID"/>
+            <field name="start_timestamp" type="uint64" isarray="false" desc="触发旅行时间戳"/>
+        </struct>
+    </structs>
+
+    <requests>
+        <request cmd="451" name="get_reward" desc="领取旅行奖励">
+            <field name="cfg_id" type="uint32" isarray="false" desc="配置ID"/>
+            <field name="pet_uid" type="uint32" isarray="false" desc="宠物UID"/>
+        </request>
+    </requests>
+
+    <responses>
+        <response cmd="461" name="travel_info" desc="旅行系统登录推送">
+            <field name="travels" type="travel" isarray="true" desc="宠物旅行列表"/>
+        </response>
+        <response cmd="462" name="travel_update" desc="旅行更新">
+            <field name="travel" type="travel" isarray="false" desc="宠物旅行"/>
+        </response>
+    </responses>
+
+</module>

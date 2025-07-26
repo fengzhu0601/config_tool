@@ -1,0 +1,113 @@
+syntax = "proto3";
+package pb_rpc_acc;
+
+
+
+option go_package = "game/pb/rpc/pb_rpc_acc";
+
+
+// 性别
+enum Sex{
+	None = 0; // 未定义性别
+	Man = 1; // 男
+	Woman = 2; // 女
+}
+
+
+
+
+// 角色详细信息
+message AccDetail {
+	uint32 Sid= 1; // 角色ID
+	uint32 Sdk= 2; // sdk_id
+	string User= 3; // sdk账号
+	string Pid= 4; // 渠道id
+	uint32 SerId= 5; // 区服ID
+	string Nickname= 6; // 昵称
+	uint32 Level= 7; // 等级
+	uint64 CreateTime= 8; // 注册时间
+	uint64 LastLoginTime= 9; // 上次登陆时间
+	bool IsMute= 10; // 是否禁言
+	bool IsBlocked= 11; // 是否封号
+}
+
+
+
+// acc-server:查询sdk账号对应sid
+message ReqGetAcc {
+	uint32 Sdk= 1; // sdk_id
+	string User= 2; // sdk账号
+	string Pid= 3; // 渠道id
+	uint32 SerId= 4; // 区服ID
+	string Version= 5; // 版本号
+}
+
+// game-server:创建玩家
+message ReqCreateAcc {
+	uint32 Sdk= 1; // sdk_id
+	string User= 2; // sdk账号
+	string Pid= 3; // 渠道id
+	uint32 SerId= 4; // 区服ID
+	uint32 Sid= 5; // 角色ID
+}
+
+// acc-server:更新玩家数据
+message ReqUpdateAcc {
+	uint32 Sid= 1; // 玩家id
+	string Nickname= 2; // 昵称
+	Sex Sex= 3; // 性别
+	uint32 Pic= 4; // 头像
+}
+
+// game-server:玩家断开连接
+message ReqAccQuick {
+	uint32 Sid= 1; // 角色ID
+}
+
+// gateway-server:顶号通知
+message ReqKickAccNotic {
+	uint32 Sid= 1; // 角色ID
+}
+
+// acc-server:根据Sid获取角色数据
+message ReqGetSidAcc {
+	uint32 Sid= 1; // 角色ID
+}
+
+// acc-server:根据user获取角色列表
+message ReqGetUserAccList {
+	string User= 1; // sdk账号
+}
+
+
+
+// acc-server:查询sdk账号对应sid
+message RepGetAcc {
+	uint32 SerId= 1; // 区服ID
+	uint32 Sid= 2; // 角色ID
+	bool IsCreate= 3; // 是否创角
+}
+
+// game-server:创建玩家
+message RepCreateAcc {
+	uint32 Sdk= 1; // sdk_id
+	string User= 2; // sdk账号
+	string Pid= 3; // 渠道id
+	uint32 SerId= 4; // 区服ID
+	uint32 Sid= 5; // 角色ID
+}
+
+// game-server:玩家断开连接
+message RepAccQuick {
+	uint32 Sid= 1; // 角色ID
+}
+
+// acc-server:根据Sid获取角色数据
+message RepGetSidAcc {
+	repeated AccDetail Acc= 1; // 角色信息
+}
+
+// acc-server:根据user获取角色列表
+message RepGetUserAccList {
+	repeated AccDetail Acc= 1; // 角色信息
+}

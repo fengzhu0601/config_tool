@@ -1,0 +1,14 @@
+
+¾
+pb_cs_equip.protopb_cs_equip"[
+Equip
+Uid (RUid
+CfgId (RCfgId
+Grade (RGrade
+Level (RLevel":
+RepAllEquips*
+Equips (2.pb_cs_equip.EquipREquips"=
+RepUpdateEquips*
+Equips (2.pb_cs_equip.EquipREquips""
+RepDelEquips
+Uids (RUidsBZgame/pb/cs/pb_cs_equipbproto3

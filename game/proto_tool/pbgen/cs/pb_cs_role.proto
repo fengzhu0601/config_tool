@@ -1,0 +1,29 @@
+syntax = "proto3";
+package pb_cs_role;
+
+
+
+option go_package = "game/pb/cs/pb_cs_role";
+
+
+
+
+
+
+
+// 设置当前宠物 成功后会推送 611
+message ReqSetCurPet {
+	uint32 PetUid= 1; // 设置的宠物Uid
+}
+
+
+
+// 英雄信息登录推送/变更推送
+message RepRoleInfo {
+	uint32 PetUid= 1; // 当前选中的宠物Uid
+}
+
+// 设置当前宠物返回
+message RepSetCurPet {
+	uint32 PetUid= 1; // 当前的宠物Uid
+}
